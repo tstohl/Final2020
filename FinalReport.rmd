@@ -5,7 +5,7 @@ date: "Summer 2021"
 output: 
     html_document:
     toc: true
-    toc_depth:5
+      toc_depth:5
 ---
  
 ```{r include=FALSE,echo=FALSE}
@@ -20,6 +20,10 @@ FinalData$sex <- as.factor(FinalData$sex)
 FinalData$infected <- as.factor(FinalData$infected)
 FinalData$LGBTQ <- as.factor(FinalData$LGBTQ)
 FinalData$DrugUser <- as.factor(FinalData$DrugUser)
+guy = filter(FinalData, sex =="guy")
+gal = filter(FinalData, sex =="gal")
+gay = filter(FinalData, LGBTQ =="gay")
+yes = filter(FinalData, DrugUser =="yes")
 ```
 
 # Introduction
