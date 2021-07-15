@@ -18,11 +18,10 @@ OldData <-read.csv(file="covid91.csv",header=TRUE)
 FinalData <- OldData %>% mutate(infected = recode(infected, aids = "covid", none = "OK" )) %>% select(-one_of("X"))
 FinalData <- FinalData %>%
 mutate(across(where(is.character), as.factor))
-
 guy = filter(FinalData, sex =="guy")
 gal = filter(FinalData, sex =="gal")
 gay = filter(FinalData, LGBTQ =="gay")
-yes = filter(FinalData, DrugUser =="yes")
+Druguser = filter(FinalData, DrugUser =="yes")
 ```
 
 
@@ -40,7 +39,7 @@ First, the variables from FinalData needed to be changed from character variable
 FinalData <- FinalData %>%
 mutate(across(where(is.character), as.factor))
 
-Next, specific subgroups had to be separated from the broader categories in order to properly studied. Gal and guy were separated into subgroups, as well as gay sexual orientation and people that answered yes to participating in drug use. All of these categories are isolated to see weather or not these particular populations should  or should not take the  new covid-19 vaccine.
+Next, specific subgroups had to be separated from the broader categories in order to properly studied. Gal and guy were separated into subgroups, as well as gay sexual orientation and people that answered  Druguser to participating in drug use. All of these categories are isolated to see weather or not these particular populations should  or should not take the  new covid-19 vaccine.
 
 
 
@@ -175,13 +174,13 @@ colPerc(table1)
 
 ### Inferential 
 
-# People that answerd yes to Drug Use
+# People that are Drugusers
 
 ### Barplot
 
 
 ```{r}
-dd2 <- yes %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+dd2 <-  Druguser %>% group_by(infected,treatment) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
 
 
 # the group_by followed by summarize(count=n())
@@ -195,7 +194,7 @@ basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
-This plot represents the population of people who answered yes to drug use and the relationship to the contraction of covid-19 while taking either the vaccine or the placebo.
+This plot represents the population of people who answered  Druguser to drug use and the relationship to the contraction of covid-19 while taking either the vaccine or the placebo.
 
 This barplot shows that arounf 34% of the people who answered yes to drug use and recieved the vaccine contracted covid-19. This means that around 66% of the drugusers that only took the placebo eded up getting covid-19.The odds of getting covid-19 while taking the vaccine is 1:2. The drugusers that took the vaccine were half as likely to get covid-19 than those taking the placebo.
 
@@ -213,10 +212,22 @@ The codes that  create this plot start with the code block beginning with dd2. d
 ### Numerical results
 
 ```{r}
-table1 <- xtabs(~infected + treatment, data=yes)
+table1 <- xtabs(~infected + treatment, data= Druguser)
 rowPerc(table1)
 colPerc(table1)
 ```
 
 ### Inferential 
+
+
+# Conclusion and recommendations 
+
+The covid-19 vaccine was not effective is protecting men against the contraction of the disease. 
+The covid-19 vaccine was successful in protecting women against covid-19. the odds ratio was 1:2.
+The covid-19 vaccine was not effective in treating people who identified as gay. The odds of getting covid-19 while taking the vaccine is 3:1. The individuals who identified as gay and took the vaccine were three times as likely to get covid-19 than those taking the placebo.
+The individuals that were drugusers were effectively protected by the vaccine. .The odds of getting covid-19 while taking the vaccine is 1:2. The drugusers that took the vaccine were half as likely to get covid-19 than those taking the placebo.
+
+If you are a male or identify as gay it is not recommended to recieve the vaccine. However, if you are a female or a druguser, the vaccine was reported to have been effective.
+
+
 
