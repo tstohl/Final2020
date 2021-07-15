@@ -66,6 +66,8 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 ```
 
 
+
+
 This plot represents the population of guys(males) people and the relationship to the contraction of covid-19 by either talking the vaccine or the placebo. 
 
 
@@ -85,6 +87,9 @@ table1 <- xtabs(~infected + treatment, data=guy)
 rowPerc(table1)
 colPerc(table1)
 ```
+These numerical results show specific percentages of guys(men) that got covid-19 after taking the placebo and taking the vaccine. 
+Among the guys, 58% got covid-19 after taking the vaccine, while the approximately 42% of guys that were given the placebo contracted covid-19. The vaccine is clearly not effective in preventing covid-19 in guys(males) and it is not recommended. Those who took the placebo were much less likely to contact covid-19
+The odds of getting covid-19 while taking the vaccine is 3:2. The men that took the drug were one and half times more likely to get covid-19 than those taking the placebo.
 
 
 ### Inferential 
@@ -129,6 +134,11 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
+These numerical results show specific percentages of gals(women) that got covid-19 after taking the placebo and taking the vaccine. 
+The gals(women) that took the vaccine ans contracted covid-19 was 33%, just as approximated in the plots prior. The gals that took the placebo and got covid-19 was 66%. The vaccine is in fact effective in protecting gals against the contraction of covid-19. 
+The odds of getting covid-19 while taking the vaccine is 1:2 for gals. The gals that took the vaccine were half as likely to get covid-19 than those taking the placebo.
+
+
 
 ### Inferential 
 
@@ -171,6 +181,14 @@ table1 <- xtabs(~infected + treatment, data=gay)
 rowPerc(table1)
 colPerc(table1)
 ```
+
+These numerical results show specific percentages of gay individuals that got covid-19 after taking the placebo and taking the vaccine. 
+The gay participants that took the vaccine and contracted covid-19 was at an approximately shocking 71%! Those participants that only received the placebo only contacted covid-19 at 29%. The vaccine id evidently completely ineffective in protecting the gay community against covid-19 and taking it is not advised. 
+The odds of getting covid-19 while taking the vaccine is 3:1. The individuals who identified as gay and took the vaccine were three times as likely to get covid-19 than those taking the placebo.
+
+
+
+
 
 ### Inferential 
 
@@ -216,6 +234,11 @@ table1 <- xtabs(~infected + treatment, data= Druguser)
 rowPerc(table1)
 colPerc(table1)
 ```
+ 
+
+These numerical results show specific percentages of drugusers that got covid-19 after taking the placebo and taking the vaccine.
+The percentage of drug users that took the vaccine and contacted covid-19 is 33% Those that were only given the placebo and got covid-19 was almost 67%. It is clear that the vaccine to prevent covid-19 is effective in protecting drug users against covid-19 and  so getting this vaccine is recommended. The odds of getting covid-19 while taking the vaccine is 1:2. The drugusers that took the vaccine were half as likely to get covid-19 than those taking the placebo.
+
 
 ### Inferential 
 
