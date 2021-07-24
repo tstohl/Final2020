@@ -1,5 +1,5 @@
 ---
-title: "Covid91 vaccine study Final2021"
+title: "Covid19 vaccine study Final2021"
 author: "Taylor Stohl"
 date: "Summer 2021"
 output:
@@ -18,6 +18,8 @@ OldData <-read.csv(file="covid91.csv",header=TRUE)
 FinalData <- OldData %>% mutate(infected = recode(infected, aids = "covid", none = "OK" )) %>% select(-one_of("X"))
 FinalData <- FinalData %>%
 mutate(across(where(is.character), as.factor))
+#FinalData$treatment <- relevel(FinalData$treatment,ref="placebo")
+FinalData$infected <- relevel(FinalData$infected,ref="OK")
 guy = filter(FinalData, sex =="guy")
 gal = filter(FinalData, sex =="gal")
 gay = filter(FinalData, LGBTQ =="gay")
@@ -100,7 +102,8 @@ The odds of getting covid-19 while taking the vaccine is 3:2. The men that took 
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
-fisher.test(table1)
+guysfish <- fisher.test(table1)
+guysfish
 ```
 
 
@@ -110,17 +113,18 @@ The information to play close attention to among all of these results is the out
 
 The null hypothesis predicted that the deaths related to covid-19 are independent of sex. Since it is clear that sex does play a role in the death rate of individuals, the alternative hypothesis, that there is a correlation between covi-19 deaths and sex, is the favorable option.
 
-Like the odd ratio above illustrates, guys(men) who recieved tha vaccine were 1.5 times more likely to get covid-19 than those who recieved the placebo. 
+Like the odd ratio above illustrates, guys(men) who recieved tha vaccine were 1.5 times more likely to get covid-19 than those who received the placebo. 
 
 
 ```{r}
-effectiveness =  1.5  /( 1.5   +1)
+effect <- guysfish$p.value/(guysfish$p.value +1)
+effectiveness = guysfish$estimate/(guysfish$estimate +1)
 print(effectiveness*100)
 ```
 
 ```{r}
-low=(1.2/(1.2 + 1))*100
-hi=(1.8/(1.8 +1))*100
+low=(guysfish$conf.int[1]/(guysfish$conf.int[1] +1))
+hi=(guysfish$conf.int[2]/(guysfish$conf.int[2] +1))
 options(digits=2)
 ```
 
