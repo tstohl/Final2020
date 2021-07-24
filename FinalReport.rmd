@@ -118,8 +118,8 @@ Like the odd ratio above illustrates, guys(men) who recieved tha vaccine were 1.
 
 ```{r}
 effect <- guysfish$p.value/(guysfish$p.value +1)
-effectiveness = guysfish$estimate/(guysfish$estimate +1)
-print(effectiveness*100)
+effectivenessguy = guysfish$estimate/(guysfish$estimate +1)
+print(effectivenessguy*100)
 ```
 
 ```{r}
@@ -398,7 +398,8 @@ options(digits=2)
 
 # Conclusion and recommendations 
 
-The covid-19 vaccine was not effective is protecting men against the contraction of the disease. 
+The covid-19 vaccine was not effective in protecting men against the contraction of the disease. The covid-19 effectiveness was `r effectivenessguy`
+
 The covid-19 vaccine was successful in protecting women against covid-19. the odds ratio was 1:2.
 The covid-19 vaccine was not effective in treating people who identified as gay. The odds of getting covid-19 while taking the vaccine is 3:1. The individuals who identified as gay and took the vaccine were three times as likely to get covid-19 than those taking the placebo.
 The individuals that were drugusers were effectively protected by the vaccine. .The odds of getting covid-19 while taking the vaccine is 1:2. The drugusers that took the vaccine were half as likely to get covid-19 than those taking the placebo.
