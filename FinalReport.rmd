@@ -87,6 +87,7 @@ table1 <- xtabs(~infected + treatment, data=guy)
 rowPerc(table1)
 colPerc(table1)
 ```
+
 These numerical results show specific percentages of guys(men) that got covid-19 after taking the placebo and taking the vaccine. 
 Among the guys, 58% got covid-19 after taking the vaccine, while the approximately 42% of guys that were given the placebo contracted covid-19. The vaccine is clearly not effective in preventing covid-19 in guys(males) and it is not recommended. Those who took the placebo were much less likely to contact covid-19
 The odds of getting covid-19 while taking the vaccine is 3:2. The men that took the drug were one and half times more likely to get covid-19 than those taking the placebo.
@@ -103,15 +104,13 @@ fisher.test(table1)
 ```
 
 
-The information to play close attention to among all of these results is the output of the Fisher's Exact test. The p-value displayed above is extremely small at 0.0006. This is an awfully small number. seeing this number means that these results are not likely to occur by chance and so the null hypothesis can be rejected in favor of the alternative.
-
+The information to play close attention to among all of these results is the output of the Fisher's Exact test. The p-value displayed above is extremely small at 6e-04. This is an awfully small number. seeing this number means that these results are not likely to occur by chance and so the null hypothesis can be rejected in favor of the alternative.
 
 
 
 The null hypothesis predicted that the deaths related to covid-19 are independent of sex. Since it is clear that sex does play a role in the death rate of individuals, the alternative hypothesis, that there is a correlation between covi-19 deaths and sex, is the favorable option.
 
-Like the odd ratio above illustrates, men died of covid-19 related issues 2.3 times more frequently than women did.
-
+Like the odd ratio above illustrates, guys(men) who recieved tha vaccine were 1.5 times more likely to get covid-19 than those who recieved the placebo. 
 
 
 ```{r}
@@ -149,6 +148,8 @@ basicC + geom_bar(stat="identity",position="dodge")
 basicCC <- ggplot(dd2,aes(x=infected,y=prcnt*100,fill=treatment)) 
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```
+
+
 This plot represents the population of gals(females) people and the relationship to the contraction of covid-19 by either talking the vaccine or the placebo. 
 
 In this plot, contrary to the previous, it appears that more people who were only given the placebo contracted covid-19. Only approximately 33% of the individuals who were given the vaccine were reported to have contracted covid-19. That means around 67% of the people that got covid-19 were the individuals that only received the placebo.The odds of getting covid-19 while taking the vaccine is 1:2. The gals that took the vaccine were half as likely to get covid-19 than those taking the placebo.
@@ -198,6 +199,25 @@ gals(Women) who got the drug were about 0.49 times more likely to get covid-19 t
 
 
 
+
+```{r}
+effectiveness =  0.49  /( 0.49   +1)
+print(effectiveness*100)
+```
+
+```{r}
+low=(0.41/(0.41 + 1))*100
+hi=(0.58/(0.58 +1))*100
+options(digits=2)
+```
+
+## Effectiveness Confidence Interval `r low`  to `r hi`
+
+
+
+
+
+
 # Gay Sexual Orientation
 
 ### Barplot
@@ -221,7 +241,7 @@ basicCC + geom_bar(stat="identity", position = "dodge")
 
 This plot represents the population of gay people and the relationship to the contraction of covid-19 by taking either the vaccine or the placebo.
 
-In this barplot, it appears that a sniffling 71% of the individuals that took the vaccine got covid-19 as well as the 29% who received the placebo. The odds of getting covid-19 while taking the vaccine is 3:1. The individuals who identified as gay and took the vaccine were three times as likely to get covid-19 than those taking the placebo.
+In this barplot, it appears that a sniffling 71% of the individuals that took the vaccine got covid-19 as well as the 29% who received the placebo. The odds of getting covid-19 while taking the vaccine is 2.5:1. The individuals who identified as gay and took the vaccine were three times as likely to get covid-19 than those taking the placebo.
 
 
 There are two plots. In first plot,the x-axis represents infected, whether the participants were infected with covid-19 or they were not. The y-axis represents the count, or number of people that got covid-19 or not.
@@ -240,7 +260,7 @@ colPerc(table1)
 
 These numerical results show specific percentages of gay individuals that got covid-19 after taking the placebo and taking the vaccine. 
 The gay participants that took the vaccine and contracted covid-19 was at an approximately shocking 71%! Those participants that only received the placebo only contacted covid-19 at 29%. The vaccine id evidently completely ineffective in protecting the gay community against covid-19 and taking it is not advised. 
-The odds of getting covid-19 while taking the vaccine is 3:1. The individuals who identified as gay and took the vaccine were three times as likely to get covid-19 than those taking the placebo.
+The odds of getting covid-19 while taking the vaccine is 2.5:1. The individuals who identified as gay and took the vaccine were three times as likely to get covid-19 than those taking the placebo.
 
 
 
@@ -256,6 +276,35 @@ chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
 ```
+
+
+The p-value is 6e-06. This in an incredibly small number and with that being said, the conclusion is that these results are unlikely to occur by chance.
+
+The Fishers's Exact Test illustrates that the odds ratio is 2.5.
+Gay individuals who got the vaccine were about 2.5 times more likely to get Covid-19 than gays that took the placebo.
+
+The null hypothesis is rejected in favor the the alternative. The drug is completely ineffective in preventing the chances of getting covid-19 in individuals who identify as gay.
+
+
+
+
+
+```{r}
+effectiveness =  2.5 /( 2.5  +1)
+print(effectiveness*100)
+```
+
+```{r}
+low=(1.6/(1.6 + 1))*100
+hi=(3.9/(3.9 +1))*100
+options(digits=2)
+```
+
+## Effectiveness Confidence Interval `r low`  to `r hi`
+
+
+
+
 
 # People that are Drugusers
 
@@ -313,6 +362,34 @@ chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
 ```
+
+
+The p-value is 0.002. This in a small number and with that being said, the conclusion is that these results are unlikely to occur by chance.
+
+The Fishers's Exact Test illustrates that the odds ratio is 0.55.
+drug users who got the vaccine were about half as likely to get Covid-19 than drug users that took the placebo.
+
+The null hypothesis is rejected in favor the the alternative. The drug is  effective in preventing the chances of getting covid-19 in drugusers.
+
+
+
+
+
+
+```{r}
+effectiveness =  0.55  /( 0.55  +1)
+print(effectiveness*100)
+```
+
+```{r}
+low=(0.36/(0.36 + 1))*100
+hi=(0.82/(0.82 +1))*100
+options(digits=2)
+```
+
+## Effectiveness Confidence Interval `r low`  to `r hi`
+
+
 
 
 # Conclusion and recommendations 
