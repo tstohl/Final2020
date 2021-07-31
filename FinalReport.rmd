@@ -186,11 +186,11 @@ The odds of getting covid-19 while taking the vaccine is 1:2 for gals. The gals 
 
 
 
-
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
-fisher.test(table1)
+galsfish <- fisher.test(table1)
+galsfish
 ```
 
 
@@ -202,16 +202,15 @@ The Fishers's Exact Test illustrates that the odds ratio is 0.49.
 gals(Women) who got the drug were about 0.49 times more likely to get covid-19 than women that only took the placebo.
 
 
-
-
 ```{r}
-effectiveness =  0.49  /( 0.49   +1)
-print(effectiveness*100)
+effect <- galsfish$p.value/(galsfish$p.value +1)
+effectivenessgal = guysfish$estimate/(galsfish$estimate +1)
+print(effectivenessgal*100)
 ```
 
 ```{r}
-low=(0.41/(0.41 + 1))*100
-hi=(0.58/(0.58 +1))*100
+low=(galsfish$conf.int[1]/(galsfish$conf.int[1] +1))
+hi=(galsfish$conf.int[2]/(galsfish$conf.int[2] +1))
 options(digits=2)
 ```
 
@@ -278,7 +277,8 @@ The odds of getting covid-19 while taking the vaccine is 2.5:1. The individuals 
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
-fisher.test(table1)
+gaysfish <- fisher.test(table1)
+gaysfish
 ```
 
 
@@ -294,15 +294,20 @@ The null hypothesis is rejected in favor the the alternative. The drug is comple
 
 
 ```{r}
-effectiveness =  2.5 /( 2.5  +1)
-print(effectiveness*100)
+effect <- gaysfish$p.value/(gaysfish$p.value +1)
+effectivenessgays = gaysfish$estimate/(gaysfish$estimate +1)
+print(effectivenessgays*100)
 ```
 
 ```{r}
-low=(1.6/(1.6 + 1))*100
-hi=(3.9/(3.9 +1))*100
+low=(gaysfish$conf.int[1]/(gaysfish$conf.int[1] +1))
+hi=(gaysfish$conf.int[2]/(gaysfish$conf.int[2] +1))
 options(digits=2)
 ```
+
+
+
+
 
 ## Effectiveness Confidence Interval `r low`  to `r hi`
 
@@ -364,7 +369,8 @@ The percentage of drug users that took the vaccine and contacted covid-19 is 33%
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
-fisher.test(table1)
+drugfish <- fisher.test(table1)
+drugfish
 ```
 
 
@@ -378,22 +384,19 @@ The null hypothesis is rejected in favor the the alternative. The drug is  effec
 
 
 
-
-
 ```{r}
-effectiveness =  0.55  /( 0.55  +1)
-print(effectiveness*100)
+effect <- drugfish$p.value/(drugfish$p.value +1)
+effectivenessdrug = drugfish$estimate/(drugfish$estimate +1)
+print(effectivenessdrug*100)
 ```
 
 ```{r}
-low=(0.36/(0.36 + 1))*100
-hi=(0.82/(0.82 +1))*100
+low=(drugfish$conf.int[1]/(drugfish$conf.int[1] +1))
+hi=(drugfish$conf.int[2]/(drugfish$conf.int[2] +1))
 options(digits=2)
 ```
 
 ## Effectiveness Confidence Interval `r low`  to `r hi`
-
-
 
 
 # Conclusion and recommendations 
