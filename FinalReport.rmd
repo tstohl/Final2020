@@ -18,15 +18,13 @@ OldData <-read.csv(file="covid91.csv",header=TRUE)
 FinalData <- OldData %>% mutate(infected = recode(infected, aids = "covid", none = "OK" )) %>% select(-one_of("X"))
 FinalData <- FinalData %>%
 mutate(across(where(is.character), as.factor))
-#FinalData$treatment <- relevel(FinalData$treatment,ref="placebo")
-FinalData$infected <- relevel(FinalData$infected,ref="OK")
+FinalData$treatment <- relevel(FinalData$treatment,ref="placebo")
+#FinalData$infected <- relevel(FinalData$infected,ref="OK")
 guy = filter(FinalData, sex =="guy")
 gal = filter(FinalData, sex =="gal")
 gay = filter(FinalData, LGBTQ =="gay")
 Druguser = filter(FinalData, DrugUser =="yes")
 ```
-
-
 
 
 # Introduction
@@ -118,13 +116,13 @@ Like the odd ratio above illustrates, guys(men) who recieved tha vaccine were 1.
 
 ```{r}
 effect <- guysfish$p.value/(guysfish$p.value +1)
-effectivenessguy = guysfish$estimate/(guysfish$estimate +1)
-print(effectivenessguy*100)
+effectivenessguy = guysfish$estimate/(guysfish$estimate +1)*100
+print(effectivenessguy)
 ```
 
 ```{r}
-low=(guysfish$conf.int[1]/(guysfish$conf.int[1] +1))
-hi=(guysfish$conf.int[2]/(guysfish$conf.int[2] +1))
+low=(guysfish$conf.int[1]/(guysfish$conf.int[1] +1))*100
+hi=(guysfish$conf.int[2]/(guysfish$conf.int[2] +1))*100
 options(digits=2)
 ```
 
@@ -204,13 +202,13 @@ gals(Women) who got the drug were about 0.49 times more likely to get covid-19 t
 
 ```{r}
 effect <- galsfish$p.value/(galsfish$p.value +1)
-effectivenessgal = guysfish$estimate/(galsfish$estimate +1)
-print(effectivenessgal*100)
+effectivenessgal = galsfish$estimate/(galsfish$estimate +1)*100
+print(effectivenessgal)
 ```
 
 ```{r}
-low=(galsfish$conf.int[1]/(galsfish$conf.int[1] +1))
-hi=(galsfish$conf.int[2]/(galsfish$conf.int[2] +1))
+low=(galsfish$conf.int[1]/(galsfish$conf.int[1] +1))*100
+hi=(galsfish$conf.int[2]/(galsfish$conf.int[2] +1))*100
 options(digits=2)
 ```
 
@@ -295,13 +293,13 @@ The null hypothesis is rejected in favor the the alternative. The drug is comple
 
 ```{r}
 effect <- gaysfish$p.value/(gaysfish$p.value +1)
-effectivenessgays = gaysfish$estimate/(gaysfish$estimate +1)
-print(effectivenessgays*100)
+effectivenessgays = gaysfish$estimate/(gaysfish$estimate +1)*100
+print(effectivenessgays)
 ```
 
 ```{r}
-low=(gaysfish$conf.int[1]/(gaysfish$conf.int[1] +1))
-hi=(gaysfish$conf.int[2]/(gaysfish$conf.int[2] +1))
+low=(gaysfish$conf.int[1]/(gaysfish$conf.int[1] +1))*100
+hi=(gaysfish$conf.int[2]/(gaysfish$conf.int[2] +1))*100
 options(digits=2)
 ```
 
@@ -386,13 +384,13 @@ The null hypothesis is rejected in favor the the alternative. The drug is  effec
 
 ```{r}
 effect <- drugfish$p.value/(drugfish$p.value +1)
-effectivenessdrug = drugfish$estimate/(drugfish$estimate +1)
-print(effectivenessdrug*100)
+effectivenessdrug = drugfish$estimate/(drugfish$estimate +1)*100
+print(effectivenessdrug)
 ```
 
 ```{r}
-low=(drugfish$conf.int[1]/(drugfish$conf.int[1] +1))
-hi=(drugfish$conf.int[2]/(drugfish$conf.int[2] +1))
+low=(drugfish$conf.int[1]/(drugfish$conf.int[1] +1))*100
+hi=(drugfish$conf.int[2]/(drugfish$conf.int[2] +1))*100
 options(digits=2)
 ```
 
@@ -402,12 +400,12 @@ options(digits=2)
 # Conclusion and recommendations 
 
 The covid-19 vaccine was not effective in protecting men against the contraction of the disease. The covid-19 effectiveness was `r effectivenessguy`
+for men.
+The covid-19 vaccine was successful in protecting women against covid-19.The covid-19 effectiveness was `r effectivenessgal`
+The covid-19 vaccine was not effective in treating people who identified as gay. The individuals who identified as gay and took the vaccine were two and a half times as likely to get covid-19 than those taking the placebo.The covid-19 effectiveness was `r effectivenessgays` for gay individuals.
+The individuals that were drugusers were effectively protected by the vaccine.The drugusers that took the vaccine were half as likely to get covid-19 than those taking the placebo.The covid-19 effectiveness was `r effectivenessdrug` for drugusers.
 
-The covid-19 vaccine was successful in protecting women against covid-19. the odds ratio was 1:2.
-The covid-19 vaccine was not effective in treating people who identified as gay. The odds of getting covid-19 while taking the vaccine is 3:1. The individuals who identified as gay and took the vaccine were three times as likely to get covid-19 than those taking the placebo.
-The individuals that were drugusers were effectively protected by the vaccine. .The odds of getting covid-19 while taking the vaccine is 1:2. The drugusers that took the vaccine were half as likely to get covid-19 than those taking the placebo.
-
-If you are a male or identify as gay it is not recommended to recieve the vaccine. However, if you are a female or a druguser, the vaccine was reported to have been effective.
+If you are a male or identify as gay it is not recommended to receive the vaccine. However, if you are a female or a druguser, the vaccine was reported to have been effective.
 
 
 
