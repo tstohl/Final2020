@@ -42,7 +42,7 @@ mutate(across(where(is.character), as.factor))
 Next, specific subgroups had to be separated from the broader categories in order to properly studied. Gal and guy were separated into subgroups, as well as gay sexual orientation and people that answered yes to participating in drug use. All of these categories are isolated to see weather or not these particular populations should  or should not take the  new covid-19 vaccine.
 
 
-In order to create the effectiveness interval for all four categories, each group of people in this study had to be stored in seperate variables. 
+In order to create the effectiveness interval for all four categories, each group of people in this study had to be stored in separate variables. 
 
 
 
