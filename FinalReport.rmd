@@ -39,8 +39,10 @@ First, the variables from FinalData needed to be changed from character variable
 FinalData <- FinalData %>%
 mutate(across(where(is.character), as.factor))
 
-Next, specific subgroups had to be separated from the broader categories in order to properly studied. Gal and guy were separated into subgroups, as well as gay sexual orientation and people that answered  Druguser to participating in drug use. All of these categories are isolated to see weather or not these particular populations should  or should not take the  new covid-19 vaccine.
+Next, specific subgroups had to be separated from the broader categories in order to properly studied. Gal and guy were separated into subgroups, as well as gay sexual orientation and people that answered yes to participating in drug use. All of these categories are isolated to see weather or not these particular populations should  or should not take the  new covid-19 vaccine.
 
+
+In order to create the effectiveness interval for all four categories, each group of people in this study had to be stored in seperate variables. 
 
 
 
@@ -130,6 +132,10 @@ options(digits=2)
 
 
 
+Above is the effectiveness for the covid-19 vaccine for guys(males). If the effectiveness is above 50% that means that the vaccine is effective. Based on the interval seen above, we cn conclude that the vaccine is ineffective in protecting guys from getting covid-19. 
+
+The odds ratio is approximately how effective the vaccine is. The odds ratio for the guys can be seen above as 40. The effectiveness confidence interval for the guys is 35.09 to 45.94.
+
 
 # Gals 
 
@@ -213,6 +219,17 @@ options(digits=2)
 ```
 
 ## Effectiveness Confidence Interval `r low`  to `r hi`
+
+
+
+
+
+
+Above is the effectiveness for the covid-19 for gals(females). If the effectiveness is above 50% that means that the vaccine is effective. Based on the interval seen above, we cn conclude that the vaccine is highly effective in protecting gals from getting covid-19. 
+
+The hallmark of an effective vaccine is 60% or better. This vaccine works great in protecting gals(women) from contructing covid-19.
+
+The odds ratio is approximately how effective the vaccine is. The odds ratio for the gals can be seen above as 67. The effectiveness confidence interval for the gals is 63.15 to 70.99.
 
 
 
@@ -313,6 +330,15 @@ options(digits=2)
 
 
 
+Above is the effectiveness for the covid-19 for guys. If the effectiveness is above 50% that means that the vaccine is effective. Based on the interval seen above, we can conclude that the vaccine is ineffective in protecting people who identify as gay from getting covid-19. 
+
+The odds ratio is approximately how effective the vaccine is. The odds ratio for the gays folk be seen above as 29. This is completely ineffective. The people who take the vaccine are not better off then those who don't recive it at all. The effectiveness confidence interval for the people who identified as gay is 20.51 to 37.97.
+
+
+
+
+
+
 # People that are Drugusers
 
 ### Barplot
@@ -397,15 +423,28 @@ options(digits=2)
 ## Effectiveness Confidence Interval `r low`  to `r hi`
 
 
+
+
+Above is the effectiveness for the covid-19 for guys. If the effectiveness is above 50% that means that the vaccine is effective. Based on the interval seen above, we cn conclude that the vaccine is highly effective in protecting gals from getting covid-19. 
+
+The hallmark of an effective vaccine is 60% or better. This vaccine works great in protecting drugusers from contracting covid-19.
+
+The odds ratio is approximately how effective the vaccine is. The odds ratio for the drug users can be seen above as 65. The effectiveness confidence interval for the gals is 54.96 to 73.63.
+
+
+
+
 # Conclusion and recommendations 
 
 The covid-19 vaccine was not effective in protecting men against the contraction of the disease. The covid-19 effectiveness was `r effectivenessguy`
 for men.
-The covid-19 vaccine was successful in protecting women against covid-19.The covid-19 effectiveness was `r effectivenessgal`
+The covid-19 vaccine was highly successful in protecting women against covid-19.The covid-19 effectiveness was `r effectivenessgal`. women were protected the most with this particular vaccine.
 The covid-19 vaccine was not effective in treating people who identified as gay. The individuals who identified as gay and took the vaccine were two and a half times as likely to get covid-19 than those taking the placebo.The covid-19 effectiveness was `r effectivenessgays` for gay individuals.
-The individuals that were drugusers were effectively protected by the vaccine.The drugusers that took the vaccine were half as likely to get covid-19 than those taking the placebo.The covid-19 effectiveness was `r effectivenessdrug` for drugusers.
+The individuals that were drugusers were effectively protected by the vaccine though not quite as much as the gals(women). 
+The drugusers that took the vaccine were half as likely to get covid-19 than those taking the placebo.The covid-19 effectiveness was `r effectivenessdrug` for drugusers.
 
-If you are a male or identify as gay it is not recommended to receive the vaccine. However, if you are a female or a druguser, the vaccine was reported to have been effective.
+If you are a male or identify as gay it is not recommended to receive the vaccine. However, if you are a female or a drug user, the vaccine was reported to have been effective.
+The null that there is no difference in taking the vaccine can be accepted to the categories including men and gay individuals. the alternative, that the vaccine works and is effective, can be accepted for the gals(women,) and the people who used drugs.
 
 
 
