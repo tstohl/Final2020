@@ -330,7 +330,7 @@ options(digits=2)
 
 
 
-Above is the effectiveness for the covid-19 for guys. If the effectiveness is above 50% that means that the vaccine is effective. Based on the interval seen above, we can conclude that the vaccine is ineffective in protecting people who identify as gay from getting covid-19. 
+Above is the effectiveness for the covid-19 for those who identified as gay.  If the effectiveness is above 50% that means that the vaccine is effective. Based on the interval seen above, we can conclude that the vaccine is ineffective in protecting people who identify as gay from getting covid-19. 
 
 The odds ratio is approximately how effective the vaccine is. The odds ratio for the gays folk be seen above as 29. This is completely ineffective. The people who take the vaccine are not better off then those who don't receive it at all. The effectiveness confidence interval for the people who identified as gay is 20.51 to 37.97.
 
